@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'icon_content.dart';
+import 'reusable_card.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+const activeCardColor = 0xFF1D1E33;
 
 class InputPage extends StatefulWidget {
   @override
@@ -19,25 +24,27 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: <Widget>[
               Expanded(
-                  child: ReusableCard(Color(0xFF1D1E33)),
+                  child: ReusableCard(Color(activeCardColor), 
+                  cardChild(FontAwesomeIcons.mars, 'MALE')),
               ),
               Expanded(
-                  child: ReusableCard(Color(0xFF1D1E33)),
+                  child: ReusableCard(Color(activeCardColor), 
+                  cardChild(FontAwesomeIcons.venus, 'FEMALE')),
               ),
             ],
             ), 
           ),
           Expanded(
-            child: ReusableCard(Color(0xFF1D1E33)),
+            child: ReusableCard(Color(activeCardColor), cardChild(FontAwesomeIcons.mars, 'MALE')),
           ),
           Expanded(
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: ReusableCard(Color(0xFF1D1E33)),
+                  child: ReusableCard(Color(activeCardColor), cardChild(FontAwesomeIcons.mars, 'MALE')),
               ),
               Expanded(
-                  child: ReusableCard(Color(0xFF1D1E33)),
+                  child: ReusableCard(Color(activeCardColor), cardChild(FontAwesomeIcons.mars, 'MALE')),
               ),
             ]
             ), 
@@ -49,18 +56,5 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
-class ReusableCard extends StatelessWidget {
-  
-  final Color color;
-  ReusableCard(@required this.color);
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-    margin: EdgeInsets.all(15.0),
-    decoration: BoxDecoration(
-    borderRadius: BorderRadius.circular(10.0),
-    color: color,
-      ),
-    );
-  }
-}
+
+
