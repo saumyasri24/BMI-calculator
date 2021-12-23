@@ -6,6 +6,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 const activeCardColour = Color(0xFF1D1E33);
 const inactiveCardColour = Color(0xFF111328);
+const numberText = TextStyle(fontSize: 50.0, fontWeight: FontWeight.w900);
+int height=180;
 
 enum Gender{
   male, female
@@ -31,6 +33,7 @@ class _InputPageState extends State<InputPage> {
       ),
       body: Center(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
           Expanded(
             child: Row(
@@ -61,7 +64,58 @@ class _InputPageState extends State<InputPage> {
             ), 
           ),
           Expanded(
-            child: ReusableCard(malecardColor, cardChild(FontAwesomeIcons.mars, 'MALE')),
+            child: ReusableCard(malecardColor, 
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.baseline,
+              textBaseline: TextBaseline.alphabetic,
+              children: <Widget>[
+                Text(
+                  'HEIGHT',
+                  style: labelTextStyle
+                ),
+                Column(
+                  // mainAxisAlignment: MainAxisAlignment.center,
+                  // crossAxisAlignment: CrossAxisAlignment.baseline,
+                  // textBaseline: TextBaseline.alphabetic,
+                  children: <Widget>[
+                  Text(
+                    height.toString(),
+                    style: numberText
+                  ),
+                  Text(
+                    'cm',
+                    style: labelTextStyle
+                  ),
+                  SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                      inactiveTrackColor: Color(0xFF8B8E98),
+                      activeTrackColor: Colors.white,
+                      thumbColor: Color(0xFFEB1555),
+                      overlayColor: Color(0x29EB1555),
+                      thumbShape: RoundSliderThumbShape(
+                        enabledThumbRadius: 15.0
+                      ),
+                      overlayShape: RoundSliderOverlayShape(
+                        overlayRadius: 30.0
+                      ),
+                    ),
+                    child:Slider(
+                    value: height.toDouble(),
+                    min: 120.0,
+                    max: 220.0,
+                    onChanged: (double newValue){
+                      setState(() {
+                        height = newValue.round();
+                        });
+                      },
+                     ),
+                    ),
+                   ],
+                  ),
+                ],
+              ),
+            ),
           ),
           Expanded(
             child: Row(
