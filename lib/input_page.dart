@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'icon_content.dart';
 import 'reusable_card.dart';
@@ -8,6 +9,8 @@ const activeCardColour = Color(0xFF1D1E33);
 const inactiveCardColour = Color(0xFF111328);
 const numberText = TextStyle(fontSize: 50.0, fontWeight: FontWeight.w900);
 int height=180;
+int weight = 60;
+int age = 30;
 
 enum Gender{
   male, female
@@ -60,7 +63,7 @@ class _InputPageState extends State<InputPage> {
                   cardChild(FontAwesomeIcons.venus, 'FEMALE')),
                 ),
               ),
-            ],
+             ],
             ), 
           ),
           Expanded(
@@ -121,14 +124,94 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: ReusableCard(malecardColor, cardChild(FontAwesomeIcons.mars, 'MALE')),
+                  child: ReusableCard(activeCardColour, Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        'WEIGHT',
+                        style: labelTextStyle,
+                      ),
+                      Text(
+                        weight.toString(),
+                        style: numberText
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                        RoundIconButton(
+                          icon: FontAwesomeIcons.plus,
+                          onPressed: (){
+                            setState(() {
+                              weight++;
+                            });
+                          }
+                        ),
+                        SizedBox(
+                          width: 10.0,
+                        ),
+                        RoundIconButton(
+                          icon: FontAwesomeIcons.minus,
+                          onPressed: (){
+                            setState(() {
+                              weight--;
+                            });
+                          }
+                        ),
+
+                      ],
+                     )
+                    ],
+                    )
+                  ),
               ),
-              Expanded(
-                  child: ReusableCard(malecardColor, cardChild(FontAwesomeIcons.mars, 'MALE')),
-              ),
-            ]
-            ), 
-          ),
+                Expanded(
+                  child: ReusableCard(activeCardColour, Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        'AGE',
+                        style: labelTextStyle,
+                      ),
+                      Text(
+                        age.toString(),
+                        style: numberText
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                        RoundIconButton(
+                          icon: FontAwesomeIcons.plus,
+                          onPressed: (){
+                            setState(() {
+                              age++;
+                            });
+                          }
+                        ),
+                        SizedBox(
+                          width: 10.0,
+                        ),
+                        RoundIconButton(
+                          icon: FontAwesomeIcons.minus,
+                          onPressed: (){
+                            setState(() {
+                              age--;
+                            });
+                          }
+                        ),
+
+                      ],
+                     )
+                    ],
+                    )
+                   ),
+                  ),
+                ]
+              ), 
+            ),
+          // Container(
+          //   margin: EdgeInsets.only(top:10.0),
+          //   width: double.infinity,
+          // )
          ],
         ),
        ),
@@ -136,5 +219,24 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
+class RoundIconButton extends StatelessWidget {
+  RoundIconButton({this.icon, this.onPressed});
+  final IconData icon;
+  final Function onPressed;
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      child: Icon(icon),
+      onPressed: onPressed,
+      elevation: 0.0,
+      constraints: BoxConstraints.tightFor(
+        width: 56.0,
+        height: 56.0
+      ),
+      shape: CircleBorder(),
+      fillColor: Color(0xFF4C4F5E),
 
+    );
+  }
+}
 
