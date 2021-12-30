@@ -1,6 +1,6 @@
-import 'package:bmi_calculator/reusable_card.dart';
+import 'package:bmi_calculator/components/reusable_card.dart';
 import 'package:flutter/material.dart';
-import 'reusable_card.dart';
+import '../components/reusable_card.dart';
 
 const titleText = TextStyle(fontSize: 50.0, fontWeight: FontWeight.bold);
 const largeButtonText = TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold);
@@ -21,6 +21,8 @@ class Results extends StatelessWidget {
         children: <Widget>[
           Expanded(
             child: Container(
+              padding: EdgeInsets.all(15.0),
+              alignment: Alignment.bottomLeft,
               child: Text('Your Result', style: titleText),
             )
           ),
