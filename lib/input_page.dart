@@ -8,6 +8,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 const activeCardColour = Color(0xFF1D1E33);
 const inactiveCardColour = Color(0xFF111328);
 const numberText = TextStyle(fontSize: 50.0, fontWeight: FontWeight.w900);
+const largeButtonText = TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold);
 int height=180;
 int weight = 60;
 int age = 30;
@@ -213,11 +214,14 @@ class _InputPageState extends State<InputPage> {
                 Navigator.pushNamed(context, '/results');
               },
               child:Container(
-                child: Text('Calculate'),
-                color: Colors.red,
+                child: Center(
+                  child:Text('CALCULATE', style: largeButtonText),
+                ),
+                color: Color(0xFFEB1555),
                 margin: EdgeInsets.only(top:10.0),
                 width: double.infinity,
                 height: 80.0,
+                padding: EdgeInsets.only(bottom: 20.0),
             )
           ),
          ],
