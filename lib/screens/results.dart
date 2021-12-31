@@ -1,6 +1,7 @@
 import 'package:bmi_calculator/components/reusable_card.dart';
 import 'package:flutter/material.dart';
 import '../components/reusable_card.dart';
+import 'calculator_brain.dart';
 
 const titleText = TextStyle(fontSize: 50.0, fontWeight: FontWeight.bold);
 const largeButtonText = TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold);
@@ -8,7 +9,11 @@ const resultText = TextStyle(color: Color(0xFF24D876), fontSize: 22.0, fontWeigh
 const BMIText = TextStyle(fontSize: 100.0, fontWeight: FontWeight.bold);
 const bodyText = TextStyle(fontSize: 22.0);
 class Results extends StatelessWidget {
+  Results(this.bmiResult, this.resultsText, this.bmiInterpretation);
 
+  final String bmiResult;
+  final String resultsText;
+  final String bmiInterpretation;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,11 +37,15 @@ class Results extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Text('Overweight', style: resultText),
-                  Text('26.7', style: BMIText),
-                  Text("You have higher BMI, you should eat less", 
-                  style: bodyText,
-                  textAlign: TextAlign.center,)
+                  Text(resultsText, style: resultText),
+                  Text(bmiResult, style: BMIText),
+                  Container(
+                    padding: EdgeInsets.all(15.0),
+                    child: Text(bmiInterpretation, 
+                      style: bodyText,
+                      textAlign: TextAlign.center,
+                    )
+                  )
                 ] 
               ),
             ),

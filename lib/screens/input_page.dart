@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import '../components/icon_content.dart';
 import '../components/reusable_card.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
+import 'calculator_brain.dart';
+import 'results.dart';
 
 const activeCardColour = Color(0xFF1D1E33);
 const inactiveCardColour = Color(0xFF111328);
@@ -211,7 +212,10 @@ class _InputPageState extends State<InputPage> {
             ),
             GestureDetector(
               onTap: (){
-                Navigator.pushNamed(context, '/results');
+                CalculatorBrain calc = CalculatorBrain(height, weight);
+                Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Results(calc.calculateBMI(), calc.result(), calc.getInterpretation())),
+                );
               },
               child:Container(
                 child: Center(
